@@ -4,7 +4,7 @@
   "description": "A challenge designed for FCC curriculum",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -28,10 +28,8 @@
     "mongoose": "^4.4.12",
     "passport": "^0.3.0",
     "passport-local": "^1.0.0",
-    "req-flash": "0.0.2"
-  },
-  "scripts": {
-    "start": "node server.js"
+    "req-flash": "0.0.2",
+    "validator": "^5.2.0"
   },
   "engines": {
     "node": "6.0.0",

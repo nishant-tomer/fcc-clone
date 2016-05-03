@@ -1,0 +1,47 @@
+
+  @media (max-width: 768px){
+
+    nav .dropdown {
+      overflow: hidden !important;
+      background-color:white !important;
+      padding:2px !important;
+      padding-bottom: 0px !important;
+      border-radius: 2px !important;
+    }
+  }
+
+  span.icon-bar {
+    background-color:white !important;
+  }
+
+  .navbar-brand{
+    color:white !important;
+    padding-top:0.9rem;
+  }
+
+.navbar-right{
+  margin-top:5px;
+}
+
+.dropdown{
+  margin-right:10px;
+}
+
+.dropdown-toggle{
+  color:white !important;
+  padding:10px !important;
+}
+.dropdown-menu{
+  padding: 15px;
+  padding-bottom: 0px;
+  width:270px;
+
+}
+#message{
+  width:80%;
+  height:50px;
+  font-size:1.5rem;
+  margin:auto;
+  margin-bottom:5px;
+  padding:5px;
+}

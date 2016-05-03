@@ -1,0 +1,131 @@
+var User = require("../models/user")
+
+var userController = module.exports = {}
+
+userController.register = function(req, res){
+
+    var newUser = new User()
+    newUser.username = req.body.username
+    newUser.password = req.body.password
+
+    newUser.save(function(err) {
+        if ( !err) {
+            req.login(err ,function(){
+              res.redirect("/profile")
+            })
+        }
+        console.log(err)
+        req.flash("message","Unable to create an account.")
+        res.redirect("/")
+    })
+}
+
+userController.editPassword = function(req, res){
+
+  User.findOne({username:req.user.username}, function(err, user){
+      if (err){ console.log(err); req.flash("message","Unable to edit Password"); res.redirect("/profile") }
+
+      user.comparePassword(req.body.currentpassword, function(err, isMatch){
+          if (err) { console.log(err); req.flash("message","Unable to edit Password") ; res.redirect("/profile")}
+
+          if( !isMatch ){ req.flash("message","Invalid password") ; res.redirect("/profile") }
+          user.password = req.body.newpassword
+          user.save( function(err, data){
+                      if (err){ console.log(err) ; req.flash("message","Unable to edit Password"); res.redirect("/profile")}
+                     req.flash("message","Password changed Succesfully.")
+                      res.redirect("/profile")
+                    })
+      })
+  })
+
+}
+
+userController.getPins = function(req, res, next ){
+
+  User.find({}, function(err, users){
+      if (err){
+        console.log(err)
+        req.flash("message","Unable to Load Pins")
+        req.pins = []
+        return next ()
+      }
+
+      req.pins = []
+      users.forEach( function(user, index){
+            user.pins.forEach(function(pin,index){
+                pin.owner = user.username
+                req.pins.push(pin)
+            })
+      })
+      return next()
+  })
+}
+
+
+userController.getProfile = function(req, res, next){
+
+  User.find({}, function(err, users){
+      if (err){
+        console.log(err)
+        req.flash("message","Unable to Load Pins")
+        req.pins = []
+        return next ()
+       }
+
+      req.pins = {
+                    "allPins":[],
+                    "myPins" :[]
+                 }
+
+      users.forEach( function(user, index){
+          if(user.username == req.user.username){
+            user.pins.forEach(function(pin,index){
+                pin.owner = user.username
+                req.pins.myPins.push(pin)
+            })
+          }
+          else {
+            user.pins.forEach(function(pin,index){
+                pin.owner = user.username
+                req.pins.allPins.push(pin)
+            })
+
+          }
+
+      })
+      return next()
+
+  })
+}
+
+
+userController.addPin = function(req, res){
+
+  User.findOne({username:req.user.username}, function(err, user){
+      if (err){ console.log(err); req.flash("message","Unable to add Pin") ; res.redirect("/profile") }
+
+      var pin = { "title" : req.body.title,
+                  "url"   : req.body.url
+                }
+      user.pins.push(pin)
+      user.save( function(err, data){
+                  if (err){ console.log(err) ; req.flash("message","Unable to add Pin") ;res.redirect("/profile")}
+                  req.flash(  "message","Pin added Succesfully.")
+                  res.redirect("/profile")
+                })
+  })
+}
+
+userController.removePin = function(req, res){
+
+  User.findOne({username:req.user.username}, function(err, user){
+      if (err){ console.log(err); req.flash("message","Unable to remove Pin") ; res.redirect("/profile") }
+      console.log(req.body.pinID)
+      user.pins.id(req.body.pinID).remove()
+      user.save( function(err, data){
+                  if (err){ console.log(err) ; req.flash("message","Unable to remove Pin") ;res.redirect("/profile")}
+                  req.flash(  "message","Pin removed Succesfully.")
+                  res.redirect("/profile")
+                })
+  })
+}
