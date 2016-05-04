@@ -57,7 +57,7 @@ h3.text-primary {
     margin-left:-125px;
 }
 
-@media (max-width: 768px){
+@media (max-width: 800px){
 
   nav .dropdown {
     overflow: hidden !important;
