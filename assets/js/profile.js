@@ -76,7 +76,6 @@ $(document).ready(function () {
 
      var container = $('.grid');
      container.imagesLoaded( function() {
-       $("#myPins").removeClass("no-display")
        container.masonry({
            itemSelector : '.grid-item'
        });

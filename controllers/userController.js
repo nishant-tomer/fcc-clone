@@ -8,15 +8,19 @@ userController.register = function(req, res){
     newUser.username = req.body.username
     newUser.password = req.body.password
 
-    newUser.save(function(err) {
-        if ( !err) {
-            req.login(err ,function(){
-              res.redirect("/profile")
-            })
+    newUser.save(function(err,user) {
+        if ( err) {
+            console.log(err)
+            req.flash("message","Unable to create an account.")
+            res.redirect("/")
         }
-        console.log(err)
-        req.flash("message","Unable to create an account.")
-        res.redirect("/")
+        req.login(user, function(err){
+          if(err){
+            console.log(err)
+          }
+          res.redirect("/profile")
+        })
+
     })
 }
 
