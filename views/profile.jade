@@ -10,7 +10,7 @@ html
     link(rel='stylesheet', type='text/css', href='css/profile.css')
 
   body
-    nav.navbar.navbar-default.bg-info
+    nav.navbar.navbar-default.bg-info.left-right-margin
       .container
         .navbar-header
           button.navbar-toggle.collapsed.btn-raised.btn-primary(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
@@ -52,23 +52,34 @@ html
                   .form-group
                     label(for='signupUsername') Username
                     button.btn.btn-raised.btn-primary(type="submit", role="submit button") Save Changes    
-    if message                    
-      p#message.bg-success.text-center #{message}   
-    - for(var i = 0; i < pins.myPins.length; i++)
-        .pin#myPins
-          img(alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="300")
-          p #{pins.myPins[i].owner}
-          form(action="/removepin", method="post", role="Remove Pin Form")
-            input(type="hidden",name="pinID",value="#{pins.myPins[i]._id}")
-            button(type="submit", role="button") Remove
-    - for(var i = 0; i < pins.allPins.length; i++)
-        .pin.no-display#allPins
-          img(alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="300")
-          p #{pins.allPins[i].owner}
+    if message                  
+      p#message.bg-success.text-center #{message} 
+    .container-fluid.left-right-margin#myPins
+      h3.text-primary.text-center My Pins 
+      .row.text-center.grid  
+        - for(var i = 0; i < pins.myPins.length; i++)
+            .col-md-3.grid-item
+              .card
+                img.img-thumbnail.img-responsive(alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="300")
+                form(action="/removepin", method="post", role="Remove Pin Form")
+                  input(type="hidden",name="pinID",value="#{pins.myPins[i]._id}")
+                  h5.text-info.text-left 
+                    button.btn.btn-default.btn-raised(type="submit", role="button" style="margin:5px;") X
+                    | #{pins.myPins[i].title}
+    .container-fluid.left-right-margin.no-display#allPins
+      h3.text-primary.text-center All Pins 
+      .row.text-center.grid  
+        - for(var i = 0; i < pins.allPins.length; i++)
+            .col-md-3.grid-item
+              .card  
+                img.img-thumbnail.img-responsive(alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="300")
+                h5.text-info #{pins.allPins[i].title}
+                p.text-success #{pins.allPins[i].owner}
             
             
     script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
     script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+    script(src='https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js')
     script(type="text/javascript", src="js/profile.js")
