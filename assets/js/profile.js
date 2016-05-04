@@ -72,9 +72,16 @@ $(document).ready(function () {
        }
    });
 
-   $('.grid').masonry({
-          itemSelector: '.grid-item'
-        });
+   var area = $('.post-area');
+     area.hide();
+
+     var container = $('.grid');
+     container.imagesLoaded( function() {
+       area.fadeIn();
+       container.masonry({
+           itemSelector : '.grid-item'
+       });
+     });
 
 
 

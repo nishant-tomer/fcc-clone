@@ -55,13 +55,13 @@ html
     if message                  
       p#message.bg-success.text-center #{message}
     h3.text-primary.text-center All Pins
-    .container-fluid.left-right-margin  
+    .container-fluid.left-right-margin.post-area  
       .row.text-center.grid  
         - for(var i = 0; i < pins.length; i++)
             .col-md-3.grid-item
               .card
                 a(target="_blank", href="#{pins[i].url}")
-                  img.img-thumbnail.img-responsive(alt= "#{pins[i].title}",src="#{pins[i].url}",width="250")
+                  img.img-thumbnail.img-responsive( onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins[i].title}",src="#{pins[i].url}",width="250")
                 h6.text-info(style="padding:5px;") #{pins[i].title.toUpperCase()}
                 a.text-success(href="/profile/#{pins[i].owner}") #{pins[i].owner}
       
@@ -75,4 +75,5 @@ html
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
     script(src='https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js')
+    script(src='https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js')
     script(type="text/javascript", src="js/home.js")
