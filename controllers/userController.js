@@ -16,7 +16,8 @@ userController.register = function(req, res){
         }
         req.login(user, function(err){
           if(err){
-            console.log(err)
+            req.flash("message","Unable to create an account.")
+            res.redirect("/")
           }
           res.redirect("/profile")
         })
