@@ -3,14 +3,21 @@ var User = require("../models/user")
 var userController = module.exports = {}
 
 userController.register = function(req, res){
+  User.findOne({username:req.body.username},function(err, user){
+    if ( err) {
+        req.flash("message","Unable to create an account.")
+        res.redirect("/")
+    }
+    if ( user.username == req.body.username){
 
+      req.flash("message","User already exits.")
+      res.redirect("/")
+    }
     var newUser = new User()
     newUser.username = req.body.username
     newUser.password = req.body.password
-
     newUser.save(function(err,user) {
         if ( err) {
-            console.log(err)
             req.flash("message","Unable to create an account.")
             res.redirect("/")
         }
@@ -23,6 +30,10 @@ userController.register = function(req, res){
         })
 
     })
+
+
+  })
+
 }
 
 userController.editPassword = function(req, res){
