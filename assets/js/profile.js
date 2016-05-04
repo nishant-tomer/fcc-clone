@@ -72,15 +72,10 @@ $(document).ready(function () {
        }
    });
 
-
-
-     var container = $('.grid');
-     container.imagesLoaded( function() {
-       container.masonry({
+       $('.grid').masonry({
            itemSelector : '.grid-item'
        });
-      $("#allPins").masonry('reload' );
-     });
+
 
 
 
