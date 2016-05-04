@@ -75,7 +75,7 @@ $(document).ready(function () {
        $('.grid').masonry({
            itemSelector : '.grid-item'
        });
-
+       $('#allPins').addClass("no-display").css('visibility','visible');
 
 
 

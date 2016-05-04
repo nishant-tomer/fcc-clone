@@ -39,6 +39,9 @@
   display:none;
 }
 
+#allPins{
+  visibility: hidden;
+}
 #addPinLink{
   display:inline-block;
 
