@@ -73,6 +73,7 @@ userController.getPins = function(req, res, next ){
             user.pins.forEach(function(pin,index){
                 pin.owner = user.username
                 req.pins.push(pin)
+                req.pins = shuffleArray(req.pins)
             })
       })
       return next()
@@ -100,12 +101,14 @@ userController.getProfile = function(req, res, next){
             user.pins.forEach(function(pin,index){
                 pin.owner = user.username
                 req.pins.myPins.push(pin)
+                req.pins.myPins = shuffleArray(req.pins.myPins)
             })
           }
           else {
             user.pins.forEach(function(pin,index){
                 pin.owner = user.username
                 req.pins.allPins.push(pin)
+                req.pins.allPins = shuffleArray(req.pins.allPins)
             })
 
           }
@@ -130,6 +133,7 @@ userController.getPublicProfile = function(req, res, next){
       user[0].pins.forEach(function(pin,index){
                     pin.owner = user[0].username
                     req.pins.push(pin)
+                    req.pins = shuffleArray(req.pins)
                   })
 
       return next()
@@ -169,4 +173,14 @@ userController.removePin = function(req, res){
                   res.redirect("/profile")
                 })
   })
+}
+
+function shuffleArray(array) {
+    for (var i = array.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+    }
+    return array;
 }
