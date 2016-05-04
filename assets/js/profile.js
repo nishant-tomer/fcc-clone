@@ -15,15 +15,15 @@ $(document).ready(function () {
       });
 
 
- $("#allPinsLink").on("click",function(event){
-   $("#allPins").removeClass("no-display")
-   $("#myPins").addClass("no-display")
- })
+     $("#allPinsLink").on("click",function(event){
+       $("#allPins").removeClass("no-display")
+       $("#myPins").addClass("no-display")
+     })
 
- $("#myPinsLink").on("click",function(event){
-   $("#allPins").addClass("no-display")
-   $("#myPins").removeClass("no-display")
- })
+     $("#myPinsLink").on("click",function(event){
+       $("#allPins").addClass("no-display")
+       $("#myPins").removeClass("no-display")
+     })
 
 
 
@@ -72,12 +72,11 @@ $(document).ready(function () {
        }
    });
 
-   var area = $('.post-area');
-     area.hide();
+
 
      var container = $('.grid');
      container.imagesLoaded( function() {
-       area.fadeIn();
+       $("#myPins").removeClass("no-display")
        container.masonry({
            itemSelector : '.grid-item'
        });

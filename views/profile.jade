@@ -52,7 +52,7 @@ html
                     button.btn.btn-raised.btn-primary(type="submit", role="submit button") Save Changes    
     if message                  
       p#message.bg-success.text-center #{message} 
-    .container-fluid.left-right-margin#myPins.post-area
+    .container-fluid.no-display.left-right-margin#myPins
       h3.text-primary.text-center My Pins 
       .row.text-center.grid  
         - for(var i = 0; i < pins.myPins.length; i++)
@@ -65,7 +65,7 @@ html
                   h6.text-info.text-left 
                     button.btn.btn-default.btn-raised(type="submit", role="button" style="margin:5px;") X
                     | #{pins.myPins[i].title.toUpperCase()}
-    .container-fluid.left-right-margin.no-display#allPins.post-area
+    .container-fluid.left-right-margin.no-display#allPins
       h3.text-primary.text-center All Pins 
       .row.text-center.grid  
         - for(var i = 0; i < pins.allPins.length; i++)
@@ -86,4 +86,4 @@ html
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
     script(src='https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js')
     script(src='https://npmcdn.com/imagesloaded@4.1/imagesloaded.pkgd.min.js')
-    script(type="text/javascript", src="js/profile.js")
+    script(type="text/javascript", src="/js/profile.js")
