@@ -34,8 +34,7 @@ var helpers = module.exports = {}
   }
 
   helpers.validatePin = function(req, res, next){
-
-    var title = ( validator.isAlphanumeric(req.body.title) &&
+    var title = ( !req.body.title.match(/[^a-z A-Z0-9]/) &&
                   validator.isLength(req.body.username,{min:2,max:40})
                 )
     var url   = ( validator.isURL(req.body.url) )
