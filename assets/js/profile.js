@@ -72,11 +72,13 @@ $(document).ready(function () {
        }
    });
 
-       $('.grid').masonry({
-           itemSelector : '.grid-item'
-       });
-       $('#allPins').addClass("no-display").css('visibility','visible');
-
+   var container = $('.grid');
+   container.imagesLoaded( function() {
+     container.masonry({
+         itemSelector : '.grid-item'
+     });
+      $('#allPins').addClass("no-display").css('visibility','visible');
+   });
 
 
 })
