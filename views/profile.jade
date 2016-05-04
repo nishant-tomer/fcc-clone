@@ -58,7 +58,8 @@ html
         - for(var i = 0; i < pins.myPins.length; i++)
             .col-md-3.grid-item
               .card
-                img.img-thumbnail.img-responsive(alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="300")
+                a(target="_blank", href="#{pins.myPins[i].url}")
+                  img.img-thumbnail.img-responsive(alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="300")
                 form(action="/removepin", method="post", role="Remove Pin Form")
                   input(type="hidden",name="pinID",value="#{pins.myPins[i]._id}")
                   h6.text-info.text-left 
@@ -69,8 +70,9 @@ html
       .row.text-center.grid  
         - for(var i = 0; i < pins.allPins.length; i++)
             .col-md-3.grid-item
-              .card  
-                img.img-thumbnail.img-responsive(alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="300")
+              .card
+                a(target="_blank", href="#{pins.allPins[i].url}")  
+                  img.img-thumbnail.img-responsive(alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="300")
                 h6.text-info(style="padding:5px;") #{pins.allPins[i].title.toUpperCase()}
                 a.text-success(href="/profile/#{pins.allPins[i].owner}") #{pins.allPins[i].owner}
     .footer.card.text-center.text-info
