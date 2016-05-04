@@ -10,7 +10,7 @@ html
     link(rel='stylesheet', type='text/css', href='/css/home.css')
   
   body
-    nav.navbar.navbar-default.bg-info
+    nav.navbar.navbar-default.bg-info.left-right-margin
       .container
         .navbar-header
           button.navbar-toggle.collapsed.btn-raised.btn-primary(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
@@ -37,7 +37,7 @@ html
                 a.btn.btn-info.btn-block.btn-raised(href="/auth/twitter") Go with Twitter 
             li.dropdown
                 a.dropdown-toggle.btn.btn-raised.btn-primary(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
-                  | Register 
+                  | Register
                 .dropdown-menu
                   form#signupForm(action="/signup", method="post", role="signup form")
                     .form-group
@@ -53,14 +53,21 @@ html
                       button.btn.btn-primary.btn-block.btn-raised(type="submit", role="submit button") Sign Up
           
     if message                  
-      p#message.bg-success.text-center #{message}  
-    - for(var i = 0; i < pins.length; i++)
-          img(alt= "#{pins[i].title}",src="#{pins[i].url}",width="300")
-          p #{pins[i].owner}
-            
+      p#message.bg-success.text-center #{message} 
+    h3.text-primary.text-center All Pins
+    .container-fluid.left-right-margin  
+      .row.text-center.grid  
+        - for(var i = 0; i < pins.length; i++)
+            .col-md-3.grid-item
+              .card
+                img.img-thumbnail.img-responsive(alt= "#{pins[i].title}",src="#{pins[i].url}",width="250")
+                h5.text-info #{pins[i].title}
+                p.text-success #{pins[i].owner}
+                
             
     script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
     script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js")
     script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
     integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+    script(src='https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js')
     script(type="text/javascript", src="js/home.js")

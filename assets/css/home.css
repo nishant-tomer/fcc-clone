@@ -1,14 +1,4 @@
 
-  @media (max-width: 768px){
-
-    nav .dropdown {
-      overflow: hidden !important;
-      background-color:white !important;
-      padding:2px !important;
-      padding-bottom: 0px !important;
-      border-radius: 2px !important;
-    }
-  }
 
   span.icon-bar {
     background-color:white !important;
@@ -44,4 +34,32 @@
   margin:auto;
   margin-bottom:5px;
   padding:5px;
+}
+
+h3.text-primary {
+  margin-top: 20px;
+}
+
+
+.left-right-margin {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+.navbar-right {
+  margin-right: 3%;
+}
+@media (max-width: 768px){
+
+  nav .dropdown {
+    overflow: hidden !important;
+    background-color:white !important;
+    padding:2px !important;
+    padding-bottom: 0px !important;
+    border-radius: 2px !important;
+  }
+
+  .left-right-margin {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
 }
