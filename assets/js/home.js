@@ -32,7 +32,7 @@ $(document).ready(function () {
             alphanumerical: /[^a-zA-Z 0-9]+/,
                minlength: 6,
                maxlength: 15,
-               equalTo: '#loginPassword'
+               equalTo: '#signupPassword'
            }
        }
    });
