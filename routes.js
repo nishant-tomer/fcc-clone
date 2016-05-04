@@ -5,11 +5,17 @@ var userController = require("./controllers/userController"),
 module.exports = function(app, passport){
 
   app.get("/", userController.getPins, function(req,res){
-    res.render("home.jade", {"message": req.flash("message"), "pins" : req.pins })
+    res.render("home.jade", {"message": req.flash("message"), "pins" : req.pins,})
   })
 
   app.get("/profile", helpers.isLoggedIn, userController.getProfile,function(req,res){
     res.render("profile.jade", {"message": req.flash("message"), "pins" : req.pins , "user": req.user.username })
+  })
+
+  app.get("/profile/:username", userController.getPublicProfile,function(req,res){
+    var profile = typeof( req.user ) == "object" ? true : false
+    if (profile){ res.render("publicProfile.jade", {"message": req.flash("message"), "pins" : req.pins , "user": req.user.username }) }
+    else { res.render("publicProfile.jade", {"message": req.flash("message"), "pins" : req.pins }) }
   })
 
   app.post('/signup', helpers.validateProfile, userController.register)

@@ -1,0 +1,121 @@
+doctype HTML
+html  
+  head
+    title PinWall | Home
+    link(rel="stylesheet",href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css",
+    integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7",crossorigin="anonymous")
+    link(rel="stylesheet",href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-material-design/4.0.1/bootstrap-material-design.min.css")
+    link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/css?family=Roboto:300,400,500,700')
+    link(rel='stylesheet', type='text/css', href='//fonts.googleapis.com/icon?family=Material+Icons')
+    if user
+      link(rel='stylesheet', type='text/css', href='/css/profile.css')
+    elser
+      link(rel='stylesheet', type='text/css', href='/css/home.css')
+  
+  body
+    if user
+      nav.navbar.navbar-default.bg-info.left-right-margin
+        .container
+          .navbar-header
+            button.navbar-toggle.collapsed.btn-raised.btn-primary(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a#allPinsLink.navbar-brand(href="/profile") PINWALL
+            a#myPinsLink.btn.btn-raised.btn-info(href="/profile") My Pins
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right
+              li#addPinLink.dropdown
+                a.dropdown-toggle.btn.btn-raised.btn-primary(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') Add New
+                .dropdown-menu
+                  form#addPin(action="/addpin", method="post", role="Add Pin form")
+                    .form-group
+                      label(for='titlePin') Title
+                      input.form-control(name="title", id="titlePin", type="text")
+                    .form-group
+                      label(for='urlPin') URL
+                      input.form-control(name="url", id="urlPin", type="url")
+                    .form-group
+                      button.btn.btn-raised.btn-primary(type="submit", role="submit button") Save
+              li.dropdown
+                a.dropdown-toggle.btn.btn-raised.btn-primary(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false') #{user}
+                .dropdown-menu
+                  a.btn.btn-block.btn-raised.btn-warning(href="/logout") Logout
+                  b#editPasswordLink.btn.btn-block.btn-raised.btn-primary Change Password
+                  form#editPassword.no-display(action="/editpassword", method="post", role="Edit Password form")
+                    .form-group
+                      label(for='currentPassword') Current Password
+                      input.form-control(name="currentpassword", id="currentPassword", type="password")
+                    .form-group
+                      label(for='newPassword') New Password
+                      input.form-control(name="newpassword", id="newPassword", type="password")
+                    .form-group
+                      label(for='confirmNewPassword') Confirm new password
+                      input.form-control(name="confirmnewpassword", id="confirmNewPassword", type="password")
+                      button.btn.btn-raised.btn-primary(type="submit", role="submit button") Save Changes    
+    else
+      nav.navbar.navbar-default.bg-info.left-right-margin
+        .container 
+          .navbar-header
+            button.navbar-toggle.collapsed.btn-raised.btn-primary(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1', aria-expanded='false')
+              span.sr-only Toggle navigation
+              span.icon-bar
+              span.icon-bar
+              span.icon-bar
+            a.navbar-brand(href="/") PINWALL #{profile}
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse
+            ul.nav.navbar-nav.navbar-right
+              li.dropdown
+                a.dropdown-toggle.btn.btn-raised.btn-primary(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                  | Login
+                .dropdown-menu
+                  form#loginForm(action="/login", method="post", role="login form", autocomplete="off")
+                    .form-group
+                      label(for='loginUsername') Username
+                      input.form-control(name="username", id="loginUsername", type="text")
+                    .form-group
+                      label(for='loginPassword') Password
+                      input.form-control(name="password", id="loginPassword",type="password")
+                    .form-group
+                      button.btn.btn-primary.btn-block.btn-raised(type="submit", role="submit button") Enter
+                  a.btn.btn-info.btn-block.btn-raised(href="/auth/twitter") Go with Twitter 
+              li.dropdown
+                  a.dropdown-toggle.btn.btn-raised.btn-primary(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+                    | Register
+                  .dropdown-menu
+                    form#signupForm(action="/signup", method="post", role="signup form")
+                      .form-group
+                        label(for='signupUsername') Username
+                        input.form-control(name="username", id="signupUsername", type="text")
+                      .form-group
+                        label(for='signupPassword') Password
+                        input.form-control(name="password", id="signupPassword", type="password")
+                      .form-group
+                        label(for='signupConfirmPassword') Confirm Password
+                        input.form-control(name="confirmpassword", id="signupConfirmPassword", type="password")
+                      .form-group
+                        button.btn.btn-primary.btn-block.btn-raised(type="submit", role="submit button") Sign Up
+    if message                  
+      p#message.bg-success.text-center #{message} 
+    h3.text-primary.text-center Pins for #{pins[0].owner}
+    .container-fluid.left-right-margin  
+      .row.text-center.grid  
+        - for(var i = 0; i < pins.length; i++)
+            .col-md-3.grid-item
+              .card
+                img.img-thumbnail.img-responsive(alt= "#{pins[i].title}",src="#{pins[i].url}",width="250")
+                h6.text-info(style="padding:5px;") #{pins[i].title.toUpperCase()}    
+    .footer.card.text-center.text-info
+      | Nishant Tomer for 
+      strong FreeCodeCamp
+        
+    script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
+    script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js",
+    integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+    script(src='https://npmcdn.com/masonry-layout@4.0/dist/masonry.pkgd.min.js')
+    if user
+      script(type="text/javascript", src="/js/profile.js")
+    else
+      script(type="text/javascript", src="/js/home.js")

@@ -53,7 +53,7 @@ html
                       button.btn.btn-primary.btn-block.btn-raised(type="submit", role="submit button") Sign Up
           
     if message                  
-      p#message.bg-success.text-center #{message} 
+      p#message.bg-success.text-center #{message}
     h3.text-primary.text-center All Pins
     .container-fluid.left-right-margin  
       .row.text-center.grid  
@@ -61,9 +61,13 @@ html
             .col-md-3.grid-item
               .card
                 img.img-thumbnail.img-responsive(alt= "#{pins[i].title}",src="#{pins[i].url}",width="250")
-                h5.text-info #{pins[i].title}
-                p.text-success #{pins[i].owner}
-                
+                h6.text-info(style="padding:5px;") #{pins[i].title.toUpperCase()}
+                a.text-success(href="/profile/#{pins[i].owner}") #{pins[i].owner}
+      
+    .footer.card.text-center.text-info
+      | Nishant Tomer for 
+      strong FreeCodeCamp
+        
             
     script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
     script(type="text/javascript", src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.15.0/jquery.validate.js")

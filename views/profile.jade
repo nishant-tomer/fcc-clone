@@ -45,12 +45,10 @@ html
                     input.form-control(name="currentpassword", id="currentPassword", type="password")
                   .form-group
                     label(for='newPassword') New Password
-                    input.form-control(name="newpassword", id="newPassword", placeholder="New Password", type="password")
+                    input.form-control(name="newpassword", id="newPassword", type="password")
                   .form-group
-                    label(for='confirmNewPassword') Username
+                    label(for='confirmNewPassword') Confirm new password 
                     input.form-control(name="confirmnewpassword", id="confirmNewPassword", type="password")
-                  .form-group
-                    label(for='signupUsername') Username
                     button.btn.btn-raised.btn-primary(type="submit", role="submit button") Save Changes    
     if message                  
       p#message.bg-success.text-center #{message} 
@@ -63,9 +61,9 @@ html
                 img.img-thumbnail.img-responsive(alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="300")
                 form(action="/removepin", method="post", role="Remove Pin Form")
                   input(type="hidden",name="pinID",value="#{pins.myPins[i]._id}")
-                  h5.text-info.text-left 
+                  h6.text-info.text-left 
                     button.btn.btn-default.btn-raised(type="submit", role="button" style="margin:5px;") X
-                    | #{pins.myPins[i].title}
+                    | #{pins.myPins[i].title.toUpperCase()}
     .container-fluid.left-right-margin.no-display#allPins
       h3.text-primary.text-center All Pins 
       .row.text-center.grid  
@@ -73,8 +71,11 @@ html
             .col-md-3.grid-item
               .card  
                 img.img-thumbnail.img-responsive(alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="300")
-                h5.text-info #{pins.allPins[i].title}
-                p.text-success #{pins.allPins[i].owner}
+                h6.text-info(style="padding:5px;") #{pins.allPins[i].title.toUpperCase()}
+                a.text-success(href="/profile/#{pins.allPins[i].owner}") #{pins.allPins[i].owner}
+    .footer.card.text-center.text-info
+      | Nishant Tomer for 
+      strong FreeCodeCamp
             
             
     script(type="text/javascript", src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")

@@ -98,6 +98,29 @@ userController.getProfile = function(req, res, next){
   })
 }
 
+userController.getPublicProfile = function(req, res, next){
+
+  User.find({ username:req.params.username }, function(err, user){
+      if (err){
+        console.log(err)
+        req.flash("message","Unable to find the User")
+        req.pins = []
+        return next ()
+       }
+
+      req.pins = []
+      user[0].pins.forEach(function(pin,index){
+                    pin.owner = user[0].username
+                    req.pins.push(pin)
+                  })
+
+      return next()
+      }
+
+    )
+
+}
+
 
 userController.addPin = function(req, res){
 
