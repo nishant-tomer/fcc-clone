@@ -30,26 +30,26 @@ $(document).ready(function () {
 
     $.validator.addMethod("alphanumerical", function(value, element, regexpr) {
      return !(regexpr.test(value));
-   }, "Only Letter and numbers allowed. Case sensitive");
+   }, "Only Letter,numbers and spaces allowed. Case sensitive");
 
    $("#editPassword").validate({
         rules: {
           currentpassword: {
-              alphanumerical: /[^a-zA-Z0-9]+/,
+              alphanumerical: /[^a-zA-Z 0-9]+/,
                required: true,
                minlength: 6,
                maxlength: 15
            },
           confirmnewpassword: {
             required: true,
-            alphanumerical: /[^a-zA-Z0-9]+/,
+            alphanumerical: /[^a-zA-Z 0-9]+/,
                minlength: 6,
                maxlength: 15,
                equalTo: '#newPassword'
            },
           newpassword: {
              required: true,
-             alphanumerical: /[^a-zA-Z0-9]+/,
+             alphanumerical: /[^a-zA-Z 0-9]+/,
              minlength: 6,
              maxlength: 15
             }
@@ -61,7 +61,7 @@ $(document).ready(function () {
 
           title:{
             required: true,
-            alphanumerical: /[^a-zA-Z0-9]+/,
+            alphanumerical: /[^a-zA-Z 0-9]+/,
             minlength:2,
             maxlength:40
           },
