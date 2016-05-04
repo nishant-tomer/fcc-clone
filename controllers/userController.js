@@ -8,29 +8,31 @@ userController.register = function(req, res){
         req.flash("message","Unable to create an account.")
         res.redirect("/")
     }
-    if ( user.username == req.body.username){
+    else if ( user.username == req.body.username){
 
-      req.flash("message","User already exits.")
+      req.flash("message","User already exists.")
       res.redirect("/")
     }
-    var newUser = new User()
-    newUser.username = req.body.username
-    newUser.password = req.body.password
-    newUser.save(function(err,user) {
-        if ( err) {
-            req.flash("message","Unable to create an account.")
-            res.redirect("/")
-        }
-        req.login(user, function(err){
-          if(err){
-            req.flash("message","Unable to create an account.")
-            res.redirect("/")
+    else {
+
+      var newUser = new User()
+      newUser.username = req.body.username
+      newUser.password = req.body.password
+      newUser.save(function(err,user) {
+          if ( err) {
+              req.flash("message","Unable to create an account.")
+              res.redirect("/")
           }
-          res.redirect("/profile")
-        })
+          req.login(user, function(err){
+            if(err){
+              req.flash("message","Unable to create an account.")
+              res.redirect("/")
+            }
+            res.redirect("/profile")
+          })
 
-    })
-
+      })
+    }
 
   })
 
