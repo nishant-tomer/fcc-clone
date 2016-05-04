@@ -79,6 +79,7 @@ $(document).ready(function () {
        container.masonry({
            itemSelector : '.grid-item'
        });
+      $("#allPins").masonry('reload' );
      });
 
 
