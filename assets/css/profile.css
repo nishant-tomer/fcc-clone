@@ -65,6 +65,10 @@ h3.text-primary {
     margin-left:-125px;
 }
 
+.grid-sizer,
+.grid-item { width: 98%; }
+.gutter-sizer { width: 10px; }
+
 
 @media (max-width:768px){
 
@@ -75,11 +79,6 @@ h3.text-primary {
     padding-bottom: 0px !important;
     border-radius: 2px !important;
   }
-
-  .grid-sizer,
-  .grid-item { width: 98%; }
-  .gutter-sizer { width: 10px; }
-
 }
 
 @media (min-width: 769px ){
