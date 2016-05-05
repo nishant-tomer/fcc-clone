@@ -91,7 +91,7 @@ h3.text-primary {
 @media (min-width: 992px ){
 
   .grid-sizer,
-  .grid-item { width: 19%; margin-bottom: 10px; }
+  .grid-item { width: 19%;}
   .gutter-sizer { width: 10px; }
 
 }
