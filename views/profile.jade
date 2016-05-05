@@ -53,7 +53,7 @@ html
                     button.btn.btn-raised.btn-primary(type="submit", role="submit button") Save Changes    
     if message                  
       p#message.bg-success.text-center #{message} 
-    .container-fluid#myPins
+    .container-fluid#myPins(style = "width:95%; margin:auto;")
       h3.text-primary.text-center My Pins 
       .row.text-center.grid
         .grid-sizer
@@ -68,7 +68,7 @@ html
                   p.text-info.text-left 
                     button.btn.btn-default.btn-raised(type="submit", role="button" style="margin:5px;") X
                     | #{pins.myPins[i].title.toUpperCase()}
-    .container-fluid#allPins
+    .container-fluid#allPins(style = "width:95%; margin:auto;")
       h3.text-primary.text-center All Pins 
       .row.text-center.grid
         .grid-sizer
