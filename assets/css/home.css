@@ -48,6 +48,9 @@ h3.text-primary {
     width:250px;
     margin-left:-125px;
 }
+.grid-sizer,
+.grid-item { width: 19%; margin-bottom: 10px; }
+.gutter-sizer { width: 10px; }
 
 @media (max-width: 800px){
 

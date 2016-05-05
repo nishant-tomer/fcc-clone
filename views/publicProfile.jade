@@ -101,9 +101,11 @@ html
       p#message.bg-success.text-center #{message} 
     h3.text-primary.text-center Pins for #{pins[0].owner}
     .container-fluid.post-area  
-      .row.text-center.grid  
+      .row.text-center.grid
+        .grid-sizer
+        .gutter-sizer  
         - for(var i = 0; i < pins.length; i++)
-            .col-md-3.grid-item
+            .grid-item
               .card
                 a(target="_blank", href="#{pins[i].url}")
                   img.img-thumbnail.img-responsive(onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins[i].title}",src="#{pins[i].url}",width="100%")
