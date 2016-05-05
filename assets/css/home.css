@@ -41,14 +41,6 @@ h3.text-primary {
 }
 
 
-.left-right-margin {
-  margin-left: 10%;
-  margin-right: 10%;
-}
-.navbar-right {
-  margin-right: 3%;
-}
-
 .footer{
   position:fixed;
    bottom:0px;
@@ -65,10 +57,5 @@ h3.text-primary {
     padding:2px !important;
     padding-bottom: 0px !important;
     border-radius: 2px !important;
-  }
-
-  .left-right-margin {
-    margin-left: 0px;
-    margin-right: 0px;
   }
 }
