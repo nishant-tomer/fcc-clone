@@ -8,7 +8,7 @@ userController.register = function(req, res){
         req.flash("message","Unable to create an account.")
         res.redirect("/")
     }
-    else if ( user.username == req.body.username){
+    else if ( user != null ){
 
       req.flash("message","User already exists.")
       res.redirect("/")
