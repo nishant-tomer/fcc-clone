@@ -65,9 +65,6 @@ h3.text-primary {
     margin-left:-125px;
 }
 
-.grid-sizer,
-.grid-item { width: 19%; margin-bottom: 10px; }
-.gutter-sizer { width: 10px; }
 
 @media (max-width:768px){
 
@@ -85,9 +82,17 @@ h3.text-primary {
 
 }
 
-@media (min-width: 768px and max-width: 992px; ){
+@media (min-width: 769px ){
 
   .grid-sizer,
   .grid-item { width: 33%; }
   .gutter-sizer { width: 10px; }
+}
+
+@media (min-width: 992px ){
+
+  .grid-sizer,
+  .grid-item { width: 19%; margin-bottom: 10px; }
+  .gutter-sizer { width: 10px; }
+
 }
