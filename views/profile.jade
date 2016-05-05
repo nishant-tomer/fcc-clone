@@ -63,7 +63,7 @@ html
                   img.img-thumbnail.img-responsive(onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="300")
                 form(action="/removepin", method="post", role="Remove Pin Form")
                   input(type="hidden",name="pinID",value="#{pins.myPins[i]._id}")
-                  h6.text-info.text-left 
+                  p.text-info.text-left 
                     button.btn.btn-default.btn-raised(type="submit", role="button" style="margin:5px;") X
                     | #{pins.myPins[i].title.toUpperCase()}
     .container-fluid#allPins
@@ -74,8 +74,8 @@ html
               .card
                 a(target="_blank", href="#{pins.allPins[i].url}")  
                   img.img-thumbnail.img-responsive(onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="300")
-                h6.text-info(style="padding:5px;") #{pins.allPins[i].title.toUpperCase()}
-                a.text-success(href="/profile/#{pins.allPins[i].owner}") #{pins.allPins[i].owner}
+                p.text-info(style="padding:5px;") #{pins.allPins[i].title.toUpperCase()}
+                a.btn.text-success(href="/profile/#{pins.allPins[i].owner}") #{pins.allPins[i].owner}
     .footer.card.text-center.text-info
       | Nishant Tomer for 
       strong FreeCodeCamp
