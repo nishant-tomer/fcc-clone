@@ -60,7 +60,7 @@ html
             .col-md-3.grid-item
               .card
                 a(target="_blank", href="#{pins.myPins[i].url}")
-                  img.img-thumbnail.img-responsive(onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="300")
+                  img.img-thumbnail.img-responsive(onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins.myPins[i].title}",src="#{pins.myPins[i].url}", width="100%")
                 form(action="/removepin", method="post", role="Remove Pin Form")
                   input(type="hidden",name="pinID",value="#{pins.myPins[i]._id}")
                   p.text-info.text-left 
@@ -73,8 +73,8 @@ html
             .col-md-3.grid-item
               .card
                 a(target="_blank", href="#{pins.allPins[i].url}")  
-                  img.img-thumbnail.img-responsive(onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="300")
-                p.text-info(style="padding-top:5px;") #{pins.allPins[i].title.toUpperCase()}
+                  img.img-thumbnail.img-responsive(onerror='this.onerror=null; this.src="/img/noimage.gif";',alt= "#{pins.allPins[i].title}",src="#{pins.allPins[i].url}" ,width="100%")
+                p.text-info(style="padding-top:5px; margin-bottom:-10px;") #{pins.allPins[i].title.toUpperCase()}
                 a.btn.text-success(href="/profile/#{pins.allPins[i].owner}") #{pins.allPins[i].owner}
     .footer.card.text-center.text-info
       | Nishant Tomer for 
